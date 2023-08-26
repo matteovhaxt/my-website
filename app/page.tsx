@@ -1,12 +1,23 @@
+"use client"
+
 import Link from 'next/link'
+import React, { useState, useEffect } from 'react';
+
 
 export default function Home() {
   return (
-    <div className='p-8 sm:h-screen flex flex-col justify-between'>
-      <p className='py-2 text-4xl font-extrabold'>Matteo von Haxthausen</p>
+    <div className='p-8 sm:h-screen flex flex-col gap-8 justify-between'>
+      <div>
+        <p className='py-2 text-4xl font-extrabold'>Matteo von Haxthausen</p>
+        <p className='py-6 text-2xl font-semibold'>Software Developer, Student and Tech Enthusiast</p>
+      </div>
       <div className='flex flex-col sm:flex-row justify-evenly items-center'>
-        <p className='text-2xl font-semibold'>Software Developer, Student and Tech Enthusiast</p>
-        <img className='rounded-full shadow-xl sm:max-h-96 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105' src="/portrait.png" alt="A picture of me" />
+        <div className='w-1/2 text-center'>
+          <Typewriter text='Welcome to my website!' />
+        </div>
+        <div className='w-1/2 flex justify-center'>
+          <img className='rounded-full shadow-xl sm:max-h-96 transition ease-in-out delay-150 hover:scale-110' src="/portrait.png" alt="A picture of me" />
+        </div>
       </div> 
       <div className='grid gap-8 grid-cols-1 sm:grid-cols-3'>
         <HomeItem title='Portfolio' description='My past work experiences and personal projects.' link='/portfolio' />
@@ -26,4 +37,26 @@ function HomeItem({ title, description, link }: { title: string, description: st
       </div>
     </Link>
   )
+}
+
+function Typewriter({ text }: { text: string }) {
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setCurrentText(prevText => prevText + text[currentIndex]);
+        setCurrentIndex(prevIndex => prevIndex + 1);
+      }, 100);
+  
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, 100, text]);
+
+  return (
+    <span className='text-6xl font-extrabold'>
+      {currentText} {currentIndex != text.length ? '_' : ''}
+    </span>
+  );
 }
