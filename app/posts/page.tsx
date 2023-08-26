@@ -26,7 +26,7 @@ function Post({ post }: { post: any }) {
 
     return (
         <Link href={`/posts/${id}`}>
-            <div className="bg-white p-8 rounded-3xl shadow-xl flex flex-col gap-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105">
+            <div className="bg-white p-8 rounded-3xl shadow-xl flex flex-col gap-2 transition ease-in-out delay-150 hover:scale-105">
                 <p className="text-xl font-bold">{title}</p>
                 <p className="text-sm text-gray-700">Last updated at: {new Date(updated).toDateString()}</p>
                 <p className="text-sm text-gray-700">Created at: {new Date(created).toDateString()}</p>
