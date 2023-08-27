@@ -22,10 +22,16 @@ export default function Home() {
           <img className='rounded-full shadow-xl sm:max-h-96 transition ease-in-out delay-150 hover:scale-110' src="/portrait.png" alt="A picture of me" />
         </div>
       </div> 
-      <div className='grid gap-8 grid-cols-1 sm:grid-cols-3'>
+      <div className='grid gap-8 grid-cols-1 sm:grid-cols-4'>
         <Item title='Portfolio' description='My past work experiences and personal projects.' link='/portfolio' />
         <Item title='Blog' description='A collection of articles, essays and thoughts.' link='/posts' />
         <Item title='About Me' description='Some information on my personal background.' link='/about' />
+        <div className='grid gap-2 grid-cols-2'>
+          <Social path='/icons/github.png' link='https://github.com/matteovhaxt' />
+          <Social path='/icons/stack_overflow.png' link='https://stackoverflow.com/users/13111236/matteo' />
+          <Social path='/icons/linked_in.png' link='https://www.linkedin.com/in/matteovonhaxthausen/' />
+          <Social path='/icons/x.png' link='https://twitter.com/matteovhaxt' />
+        </div>
       </div>
     </div>
   );
@@ -33,8 +39,8 @@ export default function Home() {
 
 function Button({ text, path, onClick }: { text: string, path: string, onClick: MouseEventHandler<HTMLButtonElement> }) {
   return (
-    <div className='p-4 bg-black rounded-2xl flex flex-row gap-2 items-center'>
-      <img className='h-6 w-6' src={path} alt="Send icon" />
+    <div className='p-4 bg-stone-900 rounded-2xl flex flex-row gap-2 items-center'>
+      <img className='h-6 w-6' src={path} alt={"icon from " + path} />
       <button onClick={onClick} className='text-xl font-semibold text-white'>{text}</button>
     </div>
   );
@@ -70,5 +76,15 @@ function Item({ title, description, link }: { title: string, description: string
         <p className='text-gray-700'>{description}</p>
       </div>
     </Link>
+  );
+}
+
+function Social({ link, path}: { link: string, path: string }) {
+  return (
+    <div className='p-4 bg-stone-900 text-white flex items-center justify-center rounded-xl shadow-lg transition ease-in-out delay-150 hover:scale-105'>
+      <a href={link}>
+        <img className='h-8 w-8' src={path} alt={"icon from " + path} />
+      </a>
+    </div>
   );
 }
