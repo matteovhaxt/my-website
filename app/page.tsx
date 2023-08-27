@@ -1,15 +1,18 @@
 "use client"
 
 import Link from 'next/link'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, MouseEventHandler } from 'react';
 import './globals.css'
 
 export default function Home() {
   return (
     <div className='p-8 sm:h-screen flex flex-col gap-8 justify-between'>
-      <div>
-        <p className='py-2 text-4xl font-extrabold'>Matteo von Haxthausen</p>
-        <p className='py-6 text-2xl font-semibold'>Software Developer, Student and Tech Enthusiast</p>
+      <div className='flex flex-col sm:flex-row justify-between items-center sm:items-start'>
+        <div>
+          <p className='py-2 text-4xl font-extrabold'>Matteo von Haxthausen</p>
+          <p className='py-6 text-2xl font-semibold'>Software Developer, Student and Tech Enthusiast</p>
+        </div>
+        <Button text='Contact' path='/icons/send.png' onClick={() => {}} />
       </div>
       <div className='flex flex-col sm:flex-row gap-4 justify-evenly items-center'>
         <div className='sm:w-1/2 text-center'>
@@ -37,6 +40,15 @@ function HomeItem({ title, description, link }: { title: string, description: st
       </div>
     </Link>
   )
+}
+
+function Button({ text, path, onClick }: { text: string, path: string, onClick: MouseEventHandler<HTMLButtonElement> }) {
+  return (
+    <div className='p-4 bg-black rounded-2xl flex flex-row gap-2 items-center'>
+      <img className='h-6 w-6' src={path} alt="Send icon" />
+      <button onClick={onClick} className='text-xl font-semibold text-white'>{text}</button>
+    </div>
+  );
 }
 
 function Typewriter({ text }: { text: string }) {
