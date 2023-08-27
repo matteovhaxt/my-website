@@ -23,23 +23,12 @@ export default function Home() {
         </div>
       </div> 
       <div className='grid gap-8 grid-cols-1 sm:grid-cols-3'>
-        <HomeItem title='Portfolio' description='My past work experiences and personal projects.' link='/portfolio' />
-        <HomeItem title='Blog' description='A collection of articles, essays and thoughts.' link='/posts' />
-        <HomeItem title='About Me' description='Some information on my personal background.' link='/about' />
+        <Item title='Portfolio' description='My past work experiences and personal projects.' link='/portfolio' />
+        <Item title='Blog' description='A collection of articles, essays and thoughts.' link='/posts' />
+        <Item title='About Me' description='Some information on my personal background.' link='/about' />
       </div>
     </div>
-  )
-}
-
-function HomeItem({ title, description, link }: { title: string, description: string, link: string }) {
-  return (
-    <Link href={link}>
-      <div className='bg-white p-8 rounded-3xl shadow-xl flex flex-col gap-2 transition ease-in-out delay-150 hover:scale-105'>
-        <p className='text-xl font-bold'>{title}</p>
-        <p className='text-gray-700'>{description}</p>
-      </div>
-    </Link>
-  )
+  );
 }
 
 function Button({ text, path, onClick }: { text: string, path: string, onClick: MouseEventHandler<HTMLButtonElement> }) {
@@ -70,5 +59,16 @@ function Typewriter({ text }: { text: string }) {
     <span className='hero-font text-4xl font-extrabold'>
       {currentText} {currentIndex != text.length ? '_' : ''}
     </span>
+  );
+}
+
+function Item({ title, description, link }: { title: string, description: string, link: string }) {
+  return (
+    <Link href={link}>
+      <div className='bg-white p-8 rounded-3xl shadow-xl flex flex-col gap-2 transition ease-in-out delay-150 hover:scale-105'>
+        <p className='text-xl font-bold'>{title}</p>
+        <p className='text-gray-700'>{description}</p>
+      </div>
+    </Link>
   );
 }
