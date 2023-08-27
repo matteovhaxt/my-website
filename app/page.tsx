@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react';
-
+import './globals.css'
 
 export default function Home() {
   return (
@@ -11,11 +11,11 @@ export default function Home() {
         <p className='py-2 text-4xl font-extrabold'>Matteo von Haxthausen</p>
         <p className='py-6 text-2xl font-semibold'>Software Developer, Student and Tech Enthusiast</p>
       </div>
-      <div className='flex flex-col sm:flex-row justify-evenly items-center'>
-        <div className='w-1/2 text-center'>
+      <div className='flex flex-col sm:flex-row gap-4 justify-evenly items-center'>
+        <div className='sm:w-1/2 text-center'>
           <Typewriter text='Welcome to my website!' />
         </div>
-        <div className='w-1/2 flex justify-center'>
+        <div className='sm:w-1/2 flex justify-center'>
           <img className='rounded-full shadow-xl sm:max-h-96 transition ease-in-out delay-150 hover:scale-110' src="/portrait.png" alt="A picture of me" />
         </div>
       </div> 
@@ -55,7 +55,7 @@ function Typewriter({ text }: { text: string }) {
   }, [currentIndex, 100, text]);
 
   return (
-    <span className='text-6xl font-extrabold'>
+    <span className='hero-font text-4xl font-extrabold'>
       {currentText} {currentIndex != text.length ? '_' : ''}
     </span>
   );
