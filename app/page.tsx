@@ -12,7 +12,9 @@ export default function Home() {
           <p className='py-2 text-4xl font-extrabold'>Matteo von Haxthausen</p>
           <p className='py-6 text-2xl font-semibold'>Software Developer, Student and Tech Enthusiast</p>
         </div>
-        <Button text='Contact' path='/icons/send.png' onClick={() => {}} />
+        <div className='p-2'>
+          <Button text='Contact' path='/icons/send.png' onClick={() => {}} />
+        </div>
       </div>
       <div className='flex flex-col sm:flex-row gap-4 justify-evenly items-center'>
         <div className='sm:w-1/2 text-center'>
@@ -39,7 +41,7 @@ export default function Home() {
 
 function Button({ text, path, onClick }: { text: string, path: string, onClick: MouseEventHandler<HTMLButtonElement> }) {
   return (
-    <div className='p-4 bg-stone-900 rounded-2xl flex flex-row gap-2 items-center'>
+    <div className='p-4 bg-stone-900 rounded-xl flex flex-row gap-2 items-center transition ease-in-out delay-150 hover:scale-105'>
       <img className='h-6 w-6' src={path} alt={"icon from " + path} />
       <button onClick={onClick} className='text-xl font-semibold text-white'>{text}</button>
     </div>
@@ -81,10 +83,10 @@ function Item({ title, description, link }: { title: string, description: string
 
 function Social({ link, path}: { link: string, path: string }) {
   return (
-    <div className='p-4 bg-stone-900 text-white flex items-center justify-center rounded-xl shadow-lg transition ease-in-out delay-150 hover:scale-105'>
-      <a href={link}>
+    <a href={link}>
+      <div className='p-4 bg-stone-900 text-white flex items-center justify-center rounded-xl shadow-lg transition ease-in-out delay-150 hover:scale-105'>
         <img className='h-8 w-8' src={path} alt={"icon from " + path} />
-      </a>
-    </div>
+      </div>
+    </a>
   );
 }
